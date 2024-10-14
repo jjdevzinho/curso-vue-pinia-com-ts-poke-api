@@ -1,0 +1,31 @@
+<script setup lang="ts">
+import { useGetData } from '@/composables/getData'
+
+interface Pokemon {
+  name: string
+  url: string
+}
+
+interface PokemonData {
+  results: Pokemon[]
+}
+
+const { data, getData, loading, error } = useGetData<PokemonData>()
+
+getData('https://pokeapi.co/api/v2/pokemon')
+</script>
+
+<template>
+  <h2>Pokemons</h2>
+  <p v-if="loading">loading...</p>
+  <div class="alert alert-warning" v-if="error"></div>
+  <div v-if="data">
+    <ul class="">
+      <li v-for="pokemon in data.results" :key="pokemon.name">
+        <RouterLink :to="`/pokemons/${pokemon.name}`">
+          {{ pokemon.name }}
+        </RouterLink>
+      </li>
+    </ul>
+  </div>
+</template>
