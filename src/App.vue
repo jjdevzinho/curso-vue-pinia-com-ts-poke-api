@@ -35,6 +35,11 @@ import { RouterLink, RouterView } from 'vue-router'
             <li class="nav-item">
               <RouterLink to="/pokemons" class="nav-link">Pokemons</RouterLink>
             </li>
+            <li class="nav-item">
+              <RouterLink to="/favoritos" class="nav-link"
+                >Favoritos</RouterLink
+              >
+            </li>
           </ul>
         </div>
       </div>
